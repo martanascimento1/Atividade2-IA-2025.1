@@ -1,17 +1,5 @@
 {
   "rules": [
-    {"condition": "animal(X) e carnivoro(X)", "conclusion": "predador(X)", "certainty": 1.0}
-  ],
-  "facts": [
-    {"fact": "animal(leao)", "certainty": 1.0}
-  ],
-  "facts": [
-    {"fact": "animal(leao)", "certainty": 1.0},
-    {"fact": "carnivoro(leao)", "certainty": 1.0},
-    {"fact": "animal(galinha)", "certainty": 1.0},
-    {"fact": "temPenas(galinha)", "certainty": 1.0}
-  ],
-  "rules": [
     {
       "condition": "animal(X) e carnivoro(X)",
       "conclusion": "predador(X)",
@@ -27,6 +15,16 @@
       "conclusion": "animalDomestico(X)",
       "certainty": 0.8
     }
+  ],
+  "facts": [
+    {"fact": "animal(leao)", "certainty": 1.0},
+    {"fact": "carnivoro(leao)", "certainty": 1.0},
+    {"fact": "animal(galinha)", "certainty": 1.0},
+    {"fact": "temPenas(galinha)", "certainty": 1.0}
+  ],
+  "goals": [
+    {"goal": "predador(leao)", "id": 1}
   ]
 }
+
 

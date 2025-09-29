@@ -14,17 +14,62 @@
       "condition": "ave(X) e animal(X)",
       "conclusion": "animalDomestico(X)",
       "certainty": 0.8
+    },
+    {
+      "condition": "predador(X) e viveFloresta(X)",
+      "conclusion": "animalSelvagem(X)",
+      "certainty": 0.9
+    },
+    {
+      "condition": "ave(X) e voa(X)",
+      "conclusion": "aveMigratoria(X)",
+      "certainty": 0.7
+    },
+    {
+      "condition": "animal(X) e herbivoro(X)",
+      "conclusion": "presa(X)",
+      "certainty": 0.85
+    },
+    {
+      "condition": "animalDomestico(X) e produzAlimento(X)",
+      "conclusion": "animalUtil(X)",
+      "certainty": 0.95
+    },
+    {
+      "condition": "predador(X) e grandePorte(X)",
+      "conclusion": "apexPredador(X)",
+      "certainty": 0.9
     }
   ],
   "facts": [
     {"fact": "animal(leao)", "certainty": 1.0},
     {"fact": "carnivoro(leao)", "certainty": 1.0},
     {"fact": "animal(galinha)", "certainty": 1.0},
-    {"fact": "temPenas(galinha)", "certainty": 1.0}
+    {"fact": "temPenas(galinha)", "certainty": 1.0},
+    {"fact": "viveFloresta(leao)", "certainty": 0.8},
+    {"fact": "grandePorte(leao)", "certainty": 0.9},
+    {"fact": "animal(vaca)", "certainty": 1.0},
+    {"fact": "herbivoro(vaca)", "certainty": 1.0},
+    {"fact": "produzAlimento(vaca)", "certainty": 1.0},
+    {"fact": "animal(aguia)", "certainty": 1.0},
+    {"fact": "temPenas(aguia)", "certainty": 1.0},
+    {"fact": "voa(aguia)", "certainty": 1.0},
+    {"fact": "carnivoro(aguia)", "certainty": 1.0},
+    {"fact": "animal(coelho)", "certainty": 1.0},
+    {"fact": "herbivoro(coelho)", "certainty": 1.0},
+    {"fact": "animal(pato)", "certainty": 1.0},
+    {"fact": "temPenas(pato)", "certainty": 1.0},
+    {"fact": "voa(pato)", "certainty": 0.6},
+    {"fact": "produzAlimento(galinha)", "certainty": 0.9}
   ],
   "goals": [
-    {"goal": "predador(leao)", "id": 1}
+    {"goal": "predador(leao)", "id": 1},
+    {"goal": "animalDomestico(galinha)", "id": 2},
+    {"goal": "apexPredador(leao)", "id": 3},
+    {"goal": "presa(vaca)", "id": 4},
+    {"goal": "animalUtil(galinha)", "id": 5},
+    {"goal": "aveMigratoria(aguia)", "id": 6},
+    {"goal": "animalSelvagem(leao)", "id": 7}
   ]
 }
-
 

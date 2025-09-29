@@ -28,4 +28,5 @@
 
 ## Questão 4 :
 
+* Documentação:
 `https://colab.research.google.com/drive/1t1BVcmVB-nvlPdtaRaSgrafpDNpwTu_B`

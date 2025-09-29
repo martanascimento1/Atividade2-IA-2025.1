@@ -14,6 +14,6 @@
 * Rode um servidor localmente e abra o arquivo `index.html`no navegador;
 
 
-## Questão 3:
+## Questão :
 
-`https://colab.research.google.com/drive/1t1BVcmVB-nvlPdtaRaSgrafpDNpwTu_B?usp=sharing`
+`https://colab.research.google.com/drive/1t1BVcmVB-nvlPdtaRaSgrafpDNpwTu_B`

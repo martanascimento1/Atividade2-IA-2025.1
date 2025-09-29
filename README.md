@@ -2,7 +2,7 @@
 
 ## Questão 2:
 
- `Com base na arquitetura conceitual de um agente baseado em conhecimento, mostrada
+* Com base na arquitetura conceitual de um agente baseado em conhecimento, mostrada
 nas aulas e exibida a seguir, implemente uma ferramenta (genérica) para construir
 aplicações de sistema baseado em agente baseado em conhecimento, tendo uma base
 de conhecimento representada por uma coleção de regras do tipo SE...ENTÃO ..., e
@@ -11,16 +11,16 @@ incluir os módulos de um editor de base de conhecimento, de um motor de inferê
 com encadeamento para trás (e mais o encadeamento para frente), explanação (Por
 quê? Como?) e interface, desejavelmente, com diálogo em linguagem natural.
 Obs.: Considere como referência a ferramenta Expert Sinta, observando suas principais
-funcionalidades.`
+funcionalidades.
 
-**How to run?** : 
+**Como rodar?** : 
 
 * Rode um servidor localmente e abra o arquivo `index.html`no navegador;
 
 
 ## Questão 4:
 
- `Desenvolva, usando a ferramenta Scikit Fuzzy (ou uma outra de sua livre escolha),
+* Desenvolva, usando a ferramenta Scikit Fuzzy (ou uma outra de sua livre escolha),
 sistema baseado em regras fuzzy para:
 2.1- análise de risco de sucesso de projetos de software (a ser detalhada pelo professor) e
 2.2- Controle de Temperatura da água de um Chuveiro, contendo uma evolução da base
@@ -34,4 +34,4 @@ da modelagem, assim como: descrição do problema, indicando claramente os objet
 aplicação, as variáveis usadas; descrição da solução; compartilhe o notebook utilizado pelo
 uso do Scikit-Fuzzy.
 Obs1.: Considere a metodologia e inferência de Mamdani.
-Obs2.: Cada questão vale de 0 a 2,5 pontos.`
+Obs2.: Cada questão vale de 0 a 2,5 pontos.

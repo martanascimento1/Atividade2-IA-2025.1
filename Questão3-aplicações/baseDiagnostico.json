@@ -1,0 +1,24 @@
+{
+  "rules": [
+    {
+      "condition": "febre(alta) e dor_cabeca(intensa) e dores_musculares(fortes)",
+      "conclusion": "possivel(gripe)",
+      "certainty": 0.9
+    },
+    {
+      "condition": "febre(alta) e dor_cabeca(intensa) e manchas_pele(sim)",
+      "conclusion": "possivel(dengue)",
+      "certainty": 0.95
+    }
+  ],
+  "facts": [
+    {"fact": "febre(alta)", "certainty": 1.0},
+    {"fact": "dor_cabeca(intensa)", "certainty": 1.0},
+    {"fact": "dores_musculares(fortes)", "certainty": 1.0},
+    {"fact": "manchas_pele(sim)", "certainty": 1.0}
+  ],
+  "goals": [
+    {"goal": "possivel(gripe)", "id": 1},
+    {"goal": "possivel(dengue)", "id": 2}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "condition": "orcamento(alto) e prazo(adequado) e equipe(experiente)",
+      "conclusion": "aprovar(projeto)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "orcamento(baixo) ou risco(alto)",
+      "conclusion": "rejeitar(projeto)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "orcamento(medio) e prazo(curto)",
+      "conclusion": "revisar(projeto)",
+      "certainty": 1.0
+    }
+  ],
+  "facts": [
+    {"fact": "orcamento(baixo)", "certainty": 1.0},
+    {"fact": "prazo(curto)", "certainty": 1.0},
+    {"fact": "equipe(experiente)", "certainty": 1.0},
+    {"fact": "risco(alto)", "certainty": 1.0}
+  ],
+  "goals": [
+    {"goal": "rejeitar(projeto)", "id": 1}
+  ]
+}

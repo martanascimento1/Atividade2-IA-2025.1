@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "condition": "temPenas(sim) e sabeVoar(sim)",
+      "conclusion": "ave(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "temPenas(sim) e sabeVoar(nao)",
+      "conclusion": "avestruz(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "temEscamas(sim)",
+      "conclusion": "peixe(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "temPelos(sim)",
+      "conclusion": "mamifero(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "mamifero(X) e late(sim)",
+      "conclusion": "cachorro(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "mamifero(X) e mia(sim)",
+      "conclusion": "gato(X)",
+      "certainty": 1.0
+    }
+  ],
+  "facts": [
+    {"fact": "temPenas(sim)", "certainty": 1.0},
+    {"fact": "sabeVoar(nao)", "certainty": 1.0}
+  ],
+  "goals": [
+    {"goal": "avestruz(X)", "id": 1}
+  ]
+}

@@ -1,5 +1,7 @@
 # Atividade2-IA-2025.1
 
+* Ferramenta web para criação de sistemas especialistas baseados em regras do tipo SE...ENTÃO...
+
 ## Questão 1 :
 
 * Documentação:
@@ -11,14 +13,17 @@
 
 **Como rodar?** : 
 
-* Rode um servidor localmente e abra o arquivo `index.html`no navegador;
+* Rode o live server ou abra o arquivo `index.html`no navegador;
 
 
 ## Questão 3:
 
 **Como rodar?** : 
 
-* Rode um servidor localmente e abra o arquivo `index.html`no navegador;
+* Carregue as bases do diretorio `Questão3-aplicações` no sistema desenvolvido fazendo o mesmo procedimento descrito na questão 2;
+- Problema do Gerente (`baseGerente.json`)
+- Diagnóstico Médico (`baseDiagnostico.json`)
+- Mini-Akinator (`baseAkinator.json`)
 
 
 ## Questão 4 :

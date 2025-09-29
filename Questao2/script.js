@@ -1,4 +1,4 @@
-// Estruturas de dados para a base de conhecimento
+
 let knowledgeBase = {
     rules: [],
     facts: [],
@@ -6,7 +6,7 @@ let knowledgeBase = {
 };
 let inferenceTrace = [];
 let lastInferenceResult = null;
-// Sistema de abas
+
 function switchTab(panel, tabName) {
     const tabs = document.querySelectorAll(`#${panel} .tab`);
     const panels = document.querySelectorAll(`#${panel}-${tabName.split('-')[0]} .tab-panel`);
@@ -15,7 +15,7 @@ function switchTab(panel, tabName) {
     event.target.classList.add('active');
     document.getElementById(`${panel}-${tabName}`).classList.add('active');
 }
-// Funções para gerenciar regras
+
 function addRule() {
     const condition = document.getElementById('ruleCondition').value.trim();
     const conclusion = document.getElementById('ruleConclusion').value.trim();
@@ -53,7 +53,7 @@ function clearRuleInputs() {
     document.getElementById('ruleConclusion').value = '';
     document.getElementById('ruleCertainty').value = '1.0';
 }
-// Funções para gerenciar fatos
+
 function addFact() {
     const fact = document.getElementById('factInput').value.trim();
     const certainty = parseFloat(document.getElementById('factCertainty').value);
@@ -88,7 +88,7 @@ function clearFactInputs() {
     document.getElementById('factInput').value = '';
     document.getElementById('factCertainty').value = '1.0';
 }
-// Funções para gerenciar objetivos
+
 function addGoal() {
     const goal = document.getElementById('goalInput').value.trim();
     if (!goal) {
@@ -116,7 +116,6 @@ function updateGoalsList() {
         </div>
     `).join('');
 }
-// Motor de Inferência - Encadeamento para Frente
 function forwardChaining() {
     const query = document.getElementById('queryInput').value.trim();
     if (!query) {
@@ -149,10 +148,10 @@ function forwardChaining() {
     }
     const result = derivedFacts.find(f => f.fact === query);
     if (result) {
-        inferenceTrace.push(`✅ RESULTADO: ${query} é VERDADEIRO (certeza: ${result.certainty})`);
+        inferenceTrace.push(`RESULTADO: ${query} é VERDADEIRO (certeza: ${result.certainty})`);
         displayInferenceResult(true, query, result.certainty);
     } else {
-        inferenceTrace.push(`❌ RESULTADO: ${query} NÃO PODE SER PROVADO`);
+        inferenceTrace.push(`RESULTADO: ${query} NÃO PODE SER PROVADO`);
         displayInferenceResult(false, query);
     }
     displayInferenceSteps();
@@ -170,10 +169,10 @@ function backwardChaining() {
     inferenceTrace.push(`Objetivo: ${query}`);
     const result = proveGoal(query, []);
     if (result) {
-        inferenceTrace.push(`✅ RESULTADO: ${query} é VERDADEIRO (certeza: ${result.certainty})`);
+        inferenceTrace.push(`RESULTADO: ${query} é VERDADEIRO (certeza: ${result.certainty})`);
         displayInferenceResult(true, query, result.certainty);
     } else {
-        inferenceTrace.push(`❌ RESULTADO: ${query} NÃO PODE SER PROVADO`);
+        inferenceTrace.push(`RESULTADO: ${query} NÃO PODE SER PROVADO`);
         displayInferenceResult(false, query);
     }
     displayInferenceSteps();
@@ -237,7 +236,7 @@ function displayInferenceSteps() {
         </div>
     `;
 }
-// Sistema de Chat em Linguagem Natural
+
 function handleChatEnter(event) {
     if (event.key === 'Enter') {
         sendChatMessage();
@@ -304,9 +303,7 @@ function checkFactInKnowledgeBase(query) {
     return 'Não encontrei esse fato na base de conhecimento.';
 }
 
-// ... (código anterior mantido)
 
-// Gera a explicacao com base na escolha do usuario
 function generateExplanation() {
     const type = document.getElementById('explanationType').value;
     const query = document.getElementById('explainInput').value.trim();
@@ -323,11 +320,10 @@ function generateExplanation() {
     }
 }
 
-// Explicacao "Por que?" - Justifica a crença na conclusão
+
 function whyExplanation(query) {
     let explanationHTML = `<h3>Explicando: Por que '${query}'?</h3>`;
 
-    // Verifica se o fato está diretamente na base de fatos
     const directFact = knowledgeBase.facts.find(f => f.fact === query);
     if (directFact) {
         explanationHTML += `
@@ -340,7 +336,6 @@ function whyExplanation(query) {
         return;
     }
 
-    // Caso não esteja diretamente na base, procurar nas regras
     const rulesThatSupport = knowledgeBase.rules.filter(r => r.conclusion === query);
     if (rulesThatSupport.length === 0) {
         explanationHTML += `
@@ -353,7 +348,6 @@ function whyExplanation(query) {
         return;
     }
 
-    // Verificar se os antecedentes dessas regras estão satisfeitos
     let foundJustification = false;
     for (const rule of rulesThatSupport) {
         const conditions = rule.condition.split(' e ').map(c => c.trim());
@@ -385,8 +379,6 @@ function whyExplanation(query) {
 
     document.getElementById('explanationResult').innerHTML = explanationHTML;
 }
-
-// Explicacao "Como?" - Mostra os passos usados na inferencia (a ser implementado)
 function howExplanation(query) {
     if (!lastInferenceResult || lastInferenceResult.query !== query) {
         document.getElementById('explanationResult').innerHTML = `
@@ -397,7 +389,6 @@ function howExplanation(query) {
         return;
     }
 
-    // Usa o inferenceTrace para exibir os passos
     document.getElementById('explanationResult').innerHTML = `
         <div class="explanation-box">
             <h3>Como cheguei na conclusão para '${query}'</h3>
@@ -406,9 +397,6 @@ function howExplanation(query) {
     `;
 }
 
-// ... (código anterior mantido)
-
-// Função para salvar a base de conhecimento como JSON
 function saveKnowledgeBase() {
     const dataStr = JSON.stringify(knowledgeBase, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
@@ -422,7 +410,6 @@ function saveKnowledgeBase() {
     URL.revokeObjectURL(url);
 }
 
-// Função para carregar base de conhecimento a partir de arquivo JSON
 function loadKnowledgeBase(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -447,7 +434,6 @@ function loadKnowledgeBase(event) {
     reader.readAsText(file);
 }
 
-// Gera a explicacao com base na escolha do usuario
 function generateExplanation() {
     const type = document.getElementById('explanationType').value;
     const query = document.getElementById('explainInput').value.trim();
@@ -464,7 +450,6 @@ function generateExplanation() {
     }
 }
 
-// Explicacao "Por que?" - Justifica a crença na conclusão
 function whyExplanation(query) {
     let explanationHTML = `<h3>Explicando: Por que '${query}'?</h3>`;
 
@@ -524,7 +509,6 @@ function whyExplanation(query) {
     document.getElementById('explanationResult').innerHTML = explanationHTML;
 }
 
-// Explicacao "Como?" - Mostra os passos usados na inferencia
 function howExplanation(query) {
     if (!lastInferenceResult || lastInferenceResult.query !== query) {
         document.getElementById('explanationResult').innerHTML = `

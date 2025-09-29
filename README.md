@@ -13,6 +13,8 @@
 
 * Rode o live server ou abra o arquivo `index.html`no navegador;
 
+- Após realizar o passo acima, será carregada uma página web contendo o sistema com as funcionalidades implementadas e que podem ser testadas.
+
 
 ## Questão 3:
 

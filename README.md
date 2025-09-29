@@ -7,8 +7,13 @@
 * Rode um servidor localmente e abra o arquivo `index.html`no navegador;
 
 
-## Questão 4:
+## Questão 3:
 
 **Como rodar?** : 
 
 * Rode um servidor localmente e abra o arquivo `index.html`no navegador;
+
+
+## Questão 3:
+
+`https://colab.research.google.com/drive/1t1BVcmVB-nvlPdtaRaSgrafpDNpwTu_B?usp=sharing`

@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {"condition": "animal(X) e carnivoro(X)", "conclusion": "predador(X)", "certainty": 1.0}
+  ],
+  "facts": [
+    {"fact": "animal(leao)", "certainty": 1.0}
+  ],
+  "facts": [
+    {"fact": "animal(leao)", "certainty": 1.0},
+    {"fact": "carnivoro(leao)", "certainty": 1.0},
+    {"fact": "animal(galinha)", "certainty": 1.0},
+    {"fact": "temPenas(galinha)", "certainty": 1.0}
+  ],
+  "rules": [
+    {
+      "condition": "animal(X) e carnivoro(X)",
+      "conclusion": "predador(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "temPenas(X)",
+      "conclusion": "ave(X)",
+      "certainty": 1.0
+    },
+    {
+      "condition": "ave(X) e animal(X)",
+      "conclusion": "animalDomestico(X)",
+      "certainty": 0.8
+    }
+  ]
+}
+

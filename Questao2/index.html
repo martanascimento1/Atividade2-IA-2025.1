@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Baseado em Agente de Conhecimento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Sistema Baseado em Agente de Conhecimento</h1>
+            <p>Ferramenta para construção de sistemas especialistas com motor de inferência</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- Painel da Base de Conhecimento -->
+            <div class="panel">
+                <h2>📚 Editor da Base de Conhecimento</h2>
+                
+                <div class="tab-container">
+                    <button class="tab active" onclick="switchTab('kb', 'rules')">Regras</button>
+                    <button class="tab" onclick="switchTab('kb', 'facts')">Fatos</button>
+                    <button class="tab" onclick="switchTab('kb', 'goals')">Objetivos</button>
+                </div>
+                
+                <div class="tab-content">
+                    <!-- Tab Regras -->
+                    <div id="kb-rules" class="tab-panel active">
+                        <div class="input-group">
+                            <label>Condição (SE):</label>
+                            <input type="text" id="ruleCondition" placeholder="Ex: animal(X) e carnivoro(X)">
+                        </div>
+                        <div class="input-group">
+                            <label>Conclusão (ENTÃO):</label>
+                            <input type="text" id="ruleConclusion" placeholder="Ex: predador(X)">
+                        </div>
+                        <div class="input-group">
+                            <label>Fator de Certeza (0-1):</label>
+                            <input type="number" id="ruleCertainty" min="0" max="1" step="0.1" value="1.0">
+                        </div>
+                        <button class="btn btn-success" onclick="addRule()">Adicionar Regra</button>
+                        
+                        <div class="scroll-area" id="rulesList">
+                            <!-- Regras serão listadas aqui -->
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Fatos -->
+                    <div id="kb-facts" class="tab-panel">
+                        <div class="input-group">
+                            <label>Fato:</label>
+                            <input type="text" id="factInput" placeholder="Ex: animal(leao)">
+                        </div>
+                        <div class="input-group">
+                            <label>Fator de Certeza (0-1):</label>
+                            <input type="number" id="factCertainty" min="0" max="1" step="0.1" value="1.0">
+                        </div>
+                        <button class="btn btn-success" onclick="addFact()">Adicionar Fato</button>
+                        
+                        <div class="scroll-area" id="factsList">
+                            <!-- Fatos serão listados aqui -->
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Objetivos -->
+                    <div id="kb-goals" class="tab-panel">
+                        <div class="input-group">
+                            <label>Objetivo a verificar:</label>
+                            <input type="text" id="goalInput" placeholder="Ex: predador(leao)">
+                        </div>
+                        <button class="btn btn-success" onclick="addGoal()">Adicionar Objetivo</button>
+                        
+                        <div class="scroll-area" id="goalsList">
+                            <!-- Objetivos serão listados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Painel do Motor de Inferência -->
+            <div class="panel">
+                <h2>🔍 Motor de Inferência & Interface</h2>
+                
+                <div class="tab-container">
+                    <button class="tab active" onclick="switchTab('inference', 'reasoning')">Inferência</button>
+                    <button class="tab" onclick="switchTab('inference', 'chat')">Chat Natural</button>
+                    <button class="tab" onclick="switchTab('inference', 'explanation')">Explanação</button>
+                </div>
+
+                <div style="margin: 10px 0; display: flex; gap: 10px;">
+                    <button class="btn btn-primary" onclick="saveKnowledgeBase()">💾 Salvar Base</button>
+                    <input type="file" id="fileInput" accept=".json" onchange="loadKnowledgeBase(event)" style="display: none;">
+                    <button class="btn btn-success" onclick="document.getElementById('fileInput').click()">📂 Carregar Base</button>
+                </div>
+
+                
+                <div class="tab-content">
+                    <!-- Tab Inferência -->
+                    <div id="inference-reasoning" class="tab-panel active">
+                        <div class="input-group">
+                            <label>Consulta:</label>
+                            <input type="text" id="queryInput" placeholder="Ex: predador(leao)">
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <button class="btn btn-primary" onclick="forwardChaining()">Encadeamento para Frente</button>
+                            <button class="btn btn-primary" onclick="backwardChaining()">Encadeamento para Trás</button>
+                        </div>
+                        
+                        <div id="inferenceResult"></div>
+                        <div id="inferenceSteps"></div>
+                    </div>
+                    
+                    <!-- Tab Chat -->
+                    <div id="inference-chat" class="tab-panel">
+                        <div class="chat-container">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message system">
+                                    Olá! Sou seu assistente de sistema especialista. Você pode me fazer perguntas em linguagem natural sobre a base de conhecimento. Experimente perguntar algo como "O leão é um predador?" ou "Por que você acredita que...?"
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="chatInput" placeholder="Digite sua pergunta..." onkeypress="handleChatEnter(event)">
+                                <button class="btn btn-primary" onclick="sendChatMessage()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Explanação -->
+                    <div id="inference-explanation" class="tab-panel">
+                        <div class="input-group">
+                            <label>Tipo de Explanação:</label>
+                            <select id="explanationType">
+                                <option value="why">Por quê? (Why)</option>
+                                <option value="how">Como? (How)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Fato/Conclusão para explicar:</label>
+                            <input type="text" id="explainInput" placeholder="Ex: predador(leao)">
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="generateExplanation()">Gerar Explanação</button>
+                        
+                        <div id="explanationResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
